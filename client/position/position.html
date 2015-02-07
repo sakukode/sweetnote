@@ -1,0 +1,29 @@
+<template name="position">
+ 	<div id="{{_id}}" style="position:absolute;left:{{left}};top:{{top}};width:300px;" class="modal {{color}}">
+ 		<div class="modal-header">
+ 			<a href="" class="close" data-dismiss="modal">X</a>
+ 			{{#if editing_tablename}}
+ 			<input class="input input-medium tablename" value="{{name}}" type="text"/>
+ 			{{else}}
+ 			<h4 class="tablename"><a href="#" class="edit-note"><i class="icon icon-list-alt icon-white"></i></a> {{name}}</h4>
+ 			{{/if}}
+ 		</div>
+ 		<div class="modal-body">
+ 			<a href="#" class="label label-success addfield"><i class="icon icon-plus icon-white"></i> Lists</a>
+ 			<ul class="nav nav-pilss nav-stacked">
+ 				{{#each dbfields}}
+ 					{{> dbfield}}
+ 				{{/each}}
+ 			</ul>
+ 		</div>
+ 		<div class="modal-footer">
+ 			<span class="color-panel">
+ 				<button class="btn-color yellow" data-color="yellow"></button>
+ 				<button class="btn-color blue" data-color="blue"></button>
+ 				<button class="btn-color green" data-color="green"></button>
+ 				<button class="btn-color red" data-color="red"></button>
+ 			</span> 
+ 			<span class="fg-{{color}} pull-right date">{{dateFormatter date}}</span>
+ 		</div>
+ 	</div>
+</template>

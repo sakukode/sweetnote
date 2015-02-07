@@ -1,0 +1,104 @@
+/* Template CSS */
+body{
+	background-color: #f5f5f5;
+	margin-top: 40px;
+}
+.schema{
+	min-height: 700px;
+	height: auto;
+}
+.navbar.navbar-fixed-top{
+	background-color: #EF7D7D;
+	height: 60px;
+	z-index: 1000000;
+	-webkit-box-shadow: 3px 3px 5px 0px rgba(122,120,122,1);
+-moz-box-shadow: -1px 3px 5px 0px rgba(122,120,122,1);
+box-shadow: -1px 3px 5px 0px rgba(122,120,122,1);
+}
+.navbar .brand{
+	color: #fff;
+	line-height: 30px;
+	font-size: 2.1em;
+}
+.modal{
+	border-radius: 0 !important;
+}
+.modal-header{
+	border-bottom: 1px solid #f5f5f5;
+	color: #fff;
+}
+
+.modal-footer{
+	text-align: left;
+	border-top: none;
+	border-radius: 0 !important;	
+}
+.addfield{
+	margin-bottom: 10px;
+}
+.btn-color{
+	height: 20px;
+	width: 20px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+.modal-footer .btn + .btn {
+	margin-left: 0 !important;
+}
+.color-panel{
+	margin: 0;
+	padding: 0;
+}
+.yellow{
+	background-color: #FFC600;
+}
+.blue{
+	background-color: #58DBD9;
+}
+.green{
+	background-color: #84ECAF;
+}
+.red{
+	background-color: #EF7D7D;
+}
+
+.fg-yellow{
+	color: #FFC600;
+}
+.fg-blue{
+	color: #58DBD9;
+}
+.fg-green{
+	color: #84ECAF;
+}
+.fg-red{
+	color: #EF7D7D;
+}
+.date{
+	font-weight: bold;
+}
+.btn-action{
+	margin-left: 5px;
+	display:none;
+}
+.highlight{
+	background-color: rgba(255,255,255,0.7);
+}
+.help-text h5{
+	color: #fff;
+	line-height: 40px;
+}
+.footer{
+	font-weight: bold;
+	line-height: 40px;
+}
+.footer a{
+	color: #EF7D7D;
+}
+
+.navbar.navbar-fixed-bottom{
+	z-index: 1000000;
+	background-color: #f5f5f5;
+	height: 40px;
+}

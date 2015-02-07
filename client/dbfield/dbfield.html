@@ -1,0 +1,22 @@
+<template name="dbfield">
+	<li class="list">
+		<div id="{{_id}}" class="div-list">
+			{{#if editing_field}}
+			<input type="text" class="input input-medium efield" name="efield" value="{{name}}"/>
+			{{else}}
+			<i class="icon icon-file"></i> <span>{{name}}</span>
+				{{#if done}}
+				&nbsp;<i class="icon icon-ok"></i>	
+				{{/if}}
+
+				<a href="#" class="remove-list"><i class="icon icon-trash pull-right btn-action"></i></a>
+				<a href="#" class="edit-list"><i class="icon icon-edit pull-right btn-action"></i></a>
+				{{#unless done}}
+				<a href="#" class="done-list"><i class="icon icon-ok pull-right btn-action"></i></a>
+				{{else}}
+				<a href="#" class="not-done-list"><i class="icon icon-remove pull-right btn-action"></i></a>
+				{{/unless}}
+			{{/if}}
+		</div>
+	</li>
+</template>
