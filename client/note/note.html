@@ -1,0 +1,22 @@
+<template name="note">
+	<div class="container schema">
+			<div class="row">
+				<div class="span12">
+					<div class="alert alert-group">
+					  <span class="icon icon-tasks icon-white"></span>
+					  <span class="label-group">{{groupname}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div class="alert help">
+					  <span class="label-group"><b>"Double Click"</b> on the page to create new Note</span>
+					</div>
+				</div>
+			</div>
+			{{#each notes}}
+				{{> position}}
+			{{/each}}			
+	</div>
+</template>

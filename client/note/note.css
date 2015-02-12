@@ -1,0 +1,19 @@
+.alert-group {
+	right: 0;
+	position: fixed;
+	background-color: #EF7D7D;
+	color: #fff;
+	z-index: 10000;
+}
+.help{
+	right: 0;
+	position: fixed;
+	background-color: #f5f5f5;
+	color: #EF7D7D;
+	border: 1px solid #EF7D7D;
+	z-index: 10000;
+	margin-top: 40px;
+}
+.alert{
+	border-radius: 0;
+}

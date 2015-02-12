@@ -1,4 +1,5 @@
 // client/position/position.js
+Meteor.subscribe('theLists');
 
 Template.position.events({
 	'click .edit-note': function (evt, tmpl) {
@@ -9,27 +10,41 @@ Template.position.events({
 	'keyup .tablename': function (evt, tmpl) {
 		evt.stopPropagation();
 		evt.preventDefault();
-		if(evt.which === 13) {
-			Positions.update(this._id,{$set:{name:tmpl.find('.tablename').value}});
+		var name = trimInput(tmpl.find('.tablename').value);
+		if(name && evt.which === 13) {
+			var data = {
+				id: this._id,
+				name: name,
+			};
+
+			Meteor.call('updateNoteName', data);
 			Session.set('editing_tablename', null);
 		}
 	},
-	'click .addfield': function (evt,tmpl) {
+	'click .addlist': function (evt,tmpl) {
 		evt.preventDefault();
 		evt.stopPropagation();
-		DBfields.insert({name:'New List',done:false,tableid:this._id});
+		var data = {
+			tableid: this._id
+		};
+		Meteor.call('insertList', data);
+		//DBfields.insert({name:'New List',done:false,tableid:this._id});
 	},
 	'click .close': function (evt,tmpl) {
 		evt.stopPropagation();
 		evt.preventDefault();
-		Positions.remove({_id:this._id});
-		Meteor.call('removeAllDBfields',this._id);
+		Meteor.call('removeNote', this._id);
+		Meteor.call('removeAllLists',this._id);
 	},
 	'click .btn-color': function (evt,tmpl) {
 		//evt.stopPropagation();
 		//evt.preventDefault();
-		var color = $(evt.currentTarget).data('color');
-		Positions.update(this._id, {$set:{color:color}});
+		var data = {
+			id: this._id,
+			color: $(evt.currentTarget).data('color'),
+		};
+		
+		Meteor.call('updateNoteColor', data);
 	}
 });
 Template.position.rendered = function() {
@@ -38,7 +53,14 @@ Template.position.rendered = function() {
 		stop:function(evt,ui){
 			var left = ui.position.left;
 			var top = ui.position.top;
-			Positions.update($(this).attr('id'),{$set:{left:left + 'px',top:top + 'px'}});
+
+			var data = {
+				id: $(this).attr('id'),
+				left: ui.position.left + 'px',
+				top: ui.position.top + 'px'
+			}
+			Meteor.call('updateNotePosition', data);
+			//Positions.update($(this).attr('id'),{$set:{left:left + 'px',top:top + 'px'}});
 		}
 	});
 }
@@ -47,10 +69,7 @@ Template.position.helpers({
 	editing_tablename: function() {
 		return Session.equals('editing_tablename', this._id);
 	},
-	dbfields: function() {
-		return DBfields.find({tableid:this._id});
-	},
-	dateFormatter: function(date) {
-		return moment(date).format('DD MMM YYYY HH:mm');
+	lists: function() {
+		return Lists.find({noteid:this._id});
 	}
 });

@@ -1,49 +1,62 @@
-// client/dbfield/dbfield.js
+// client/list/list.js
 
-Template.dbfield.events({
+Template.list.events({
 	'click .edit-list': function (evt,tmpl) {
 		evt.stopPropagation();
 		evt.preventDefault();
 		Session.set('editing_field', this._id);
 	},
-	'keyup .efield': function (evt,tmpl) {
+	'keyup .elist': function (evt,tmpl) {
 		evt.stopPropagation();
 		evt.preventDefault();
-		var fieldname = tmpl.find('.efield').value;
+		var fieldname = tmpl.find('.elist').value;
 		if(fieldname && evt.which == 13) {
-			DBfields.update(this._id, {$set:{name:fieldname}});
+			var data = {
+				id: this._id,
+				name: fieldname
+			};
+			Meteor.call('updateList', data);
 			Session.set('editing_field', null);
 		}
 	},
 	'click .remove-list': function (evt,tmpl) {
 		evt.stopPropagation();
 		evt.preventDefault();
-		DBfields.remove({_id:this._id});
+		Meteor.call('removeList', this._id);
 	},
 	'click .done-list': function (evt, tmpl) {
 		evt.stopPropagation();
 		evt.preventDefault();
-		DBfields.update(this._id, {$set:{done:true}});
+		var data = {
+			id: this._id,
+			done: true
+		};
+		Meteor.call('updateStatusList', data);
 	},
 	'click .not-done-list': function (evt,tmpl) {
 		evt.stopPropagation();
 		evt.preventDefault();
-		DBfields.update(this._id, {$set:{done:false}});
+		var data = {
+			id: this._id,
+			done: false
+		}
+		Meteor.call('updateStatusList', data);
 	}
 });
 
-Template.dbfield.helpers({
+Template.list.helpers({
 	editing_field: function() {
 		return Session.equals('editing_field', this._id);
 	}
 });
 
-Template.dbfield.rendered = function() {
+Template.list.rendered = function() {
 	
 	$('.list').hover(function() {
+		
 		$(this).addClass('highlight');
 		$(this).find('.btn-action').show();
-		var tes = Session.get('editing_field');
+		
 	}, function() {
 		$(this).removeClass('highlight');
 		$(this).find('.btn-action').hide();

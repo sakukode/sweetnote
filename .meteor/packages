@@ -5,9 +5,12 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
-insecure
 jquery
 bootstrap
 jquery-ui
 momentjs:moment
+iron:router
+accounts-password
+mrt:accounts-ui-bootstrap-dropdown
+percolate:paginated-subscription
+meteorhacks:kadira

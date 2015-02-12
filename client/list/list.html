@@ -1,8 +1,8 @@
-<template name="dbfield">
+<template name="list">
 	<li class="list">
 		<div id="{{_id}}" class="div-list">
 			{{#if editing_field}}
-			<input type="text" class="input input-medium efield" name="efield" value="{{name}}"/>
+			<input type="text" class="input input-medium elist" name="efield" value="{{name}}"/>
 			{{else}}
 			<i class="icon icon-file"></i> <span>{{name}}</span>
 				{{#if done}}

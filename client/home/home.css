@@ -1,7 +1,6 @@
 /* Template CSS */
 body{
-	background-color: #f5f5f5;
-	margin-top: 40px;
+	margin-top: 70px;
 }
 .schema{
 	min-height: 700px;
@@ -26,6 +25,9 @@ box-shadow: -1px 3px 5px 0px rgba(122,120,122,1);
 .modal-header{
 	border-bottom: 1px solid #f5f5f5;
 	color: #fff;
+}
+.modal-header h3{
+	color : #333333;
 }
 
 .modal-footer{
@@ -99,6 +101,44 @@ box-shadow: -1px 3px 5px 0px rgba(122,120,122,1);
 
 .navbar.navbar-fixed-bottom{
 	z-index: 1000000;
-	background-color: #f5f5f5;
+	background-color: #fff;
 	height: 40px;
+}
+.navbar .nav .dropdown-toggle .caret{
+	margin-top: 18px !important;
+}
+.text-header{
+	color: #999999;
+}
+.addlist{
+	margin-bottom: 10px;
+}
+.description {
+	font-size: 1.2em;
+	line-height: 20px;
+}
+.text-sweet {
+	color: #EF7D7D;
+}
+.required{
+	color: red;
+}
+.nav .dropdown-toggle .caret{
+	border-top-color: #fff;
+	border-bottom-color: #fff;
+}
+.nav .dropdown-toggle:hover .caret,
+.nav .dropdown-toggle:focus .caret {
+ 	border-top-color: #fff;
+	border-bottom-color: #fff;
+}
+.navbar .nav li.dropdown > .dropdown-toggle .caret {
+	border-top-color: #fff;
+	border-bottom-color: #fff;
+}
+.navbar .nav li.dropdown.open > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.active > .dropdown-toggle .caret,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle .caret {
+  	border-top-color: #fff;
+	border-bottom-color: #fff;
 }

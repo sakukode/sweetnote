@@ -1,0 +1,88 @@
+<template name="notes">
+	<div class="container">
+		{{#if currentUser}}
+		<div class="row">
+			<div class="span10 offset1">
+				<br>	
+				<button class="btn btn-info addGroupNote"><i class="icon icon-white icon-plus"></i> Add Group</button>		
+			</div>
+		</div>
+		<div class="row">
+			<div class="span10 offset1">
+				{{#if show_form}}
+					{{>addform}}
+				{{/if}}
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="span10 offset1">
+				<table class="table table-condensed table-striped">
+					<thead>
+						<tr>
+							<th>Group Name</th>
+							<th>Created At</th>
+							<th>Description</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each groups}}
+						<tr>
+							<td>{{name}}</td>
+							<td>{{dateFormatter createdAt}}</td>
+							<td>{{desc}}</td>
+							<td>
+								<a href="#" class="btn btn-xs btn-success editGroup">edit</a>
+							 	<a href="{{pathFor 'noteShow'}}" class="btn btn-xs btn-warning">view</a>
+							 	<a href="#" class="btn btn-xs btn-danger deleteGroup">delete</a>
+							</td>
+						</tr>
+						{{/each}}
+					</tbody>
+ 				</table>
+ 			
+ 				<div id="more">
+ 				<button class="btn input-block-level loadmore">Load More</button>
+ 				</div>
+ 				
+			</div>
+		</div>
+		{{else}}
+		<div class="row">
+			<div class="span10 offset1">
+				<div class="alert alert-danger">
+				  <strong>Sorry!</strong> You must login to access here.
+				</div>
+			</div>
+		</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="addform">
+	<div class="modal">
+		<div class="modal-header">
+			<h3>{{label_form}} Group Note</h3>
+		</div>
+		<div class="modal-body">
+			{{#if alert}}
+			<div class="alert alert-danger">
+				{{alert}}
+			</div>
+			{{/if}}
+			<input type="hidden" id="id" name="id" value="{{editid}}"/>
+			<label>Group Name <span class="required">*</span></label>
+			<input type="text" name="name" id="name" class="input-block-level">
+			<label>Description</label>
+			<textarea name="desc" id="desc" rows="5" class="input-block-level"></textarea>
+			<br>
+			<p class="required">* : required</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn closeForm">Close</a>
+			<a href="#" class="btn btn-info saveGroupNote">Save changes</a>
+		</div>
+	</div>
+
+</template>
